@@ -53,7 +53,7 @@ public class Frame extends JFrame {
 //            panel2.add(textArea2);
 //            panel2.setVisible(false);
 //            textField2.setText("0");
-//            add(start);
+            add(start);
 
 
         Dice dice = new Dice(6);
