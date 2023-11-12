@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,11 +12,12 @@ public class Player {
     public int[] coordinate;
     public Color color;
     public int countOfJail;
-    public Player(List<Property> objects,int numOfPlayer, int money, int countOfJail,int[] coordinate,Color color) {
+
+    public Player(List<Property> objects,int numOfPlayer, int money,int[] coordinate,Color color) {
         this.objects = objects;
         this.numOfPlayer=numOfPlayer;
         this.money = money;
-        this.countOfJail=countOfJail;
+        this.countOfJail=0;
         this.coordinate=coordinate;
         this.color=color;
     }
@@ -78,10 +80,21 @@ public class Player {
             money+=prop.getCost();
             prop.numOfOwnedPlayer=0;
             objects.remove(prop);
-        }else{
+            prop.setNumOfOwnedPlayer(-1);
+            prop.setColor(Color.GRAY);
         }
     }
     public void changeObjects (Property prop){
 
     }
+    public void grade(Property prop){
+        if(prop.getGradeCount()<4){
+            prop.setGradeCount(prop.getGradeCount()+1);
+            prop.setCost(prop.getCost()*2);
+        }else{
+            JOptionPane.showMessageDialog(null,"Максимальная степень улучшения!");
+        }
+
+    }
+
 }
