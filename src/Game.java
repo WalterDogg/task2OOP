@@ -62,7 +62,7 @@ public class Game {
                 int result = JOptionPane.showOptionDialog(null, "Вы попали в казино, хотите сыграть? (yes, no) ", "Что хотите?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if (result == 0) {
                     Integer[] nums= {1,2,3,4,5,6};
-                    int numCas= (int) JOptionPane.showInputDialog(null, "Сделайте ставку какое число выпадет кубике", "Выбор значений кубика",JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
+                    int numCas= (int) JOptionPane.showInputDialog(null, "Сделайте ставку какое число выпадет на кубике", "Выбор значений кубика",JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
                     int diceNum=casino(player, numCas);
                     System.out.println(diceNum);
                     System.out.println(numCas);
