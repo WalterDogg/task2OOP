@@ -207,7 +207,7 @@ public class Frame extends JFrame {
 
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Dialog", Font.PLAIN, 30));
-                g.drawString(i +" "+ props.get(i).getGradeCount(),props.get(i).getX()+10,props.get(i).getY()+30);
+                g.drawString(String.valueOf(i),props.get(i).getX()+10,props.get(i).getY()+30);
 
             }
             for (int i=0; i<=10;i++){
@@ -218,7 +218,7 @@ public class Frame extends JFrame {
 
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Dialog", Font.PLAIN, 30));
-                g.drawString(i+10 +" "+ props.get(i+10).getGradeCount(),props.get(i+10).getX()+10,props.get(i+10).getY()+30);
+                g.drawString(String.valueOf(i+10),props.get(i+10).getX()+10,props.get(i+10).getY()+30);
 
             }
             int k1=38;
@@ -232,7 +232,7 @@ public class Frame extends JFrame {
 
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Dialog", Font.PLAIN, 30));
-                g.drawString(i+k1 +" "+ props.get(i+k1).getGradeCount(),props.get(i+k1).getX()+10,props.get(i+k1).getY()+30);
+                g.drawString(String.valueOf(i+k1),props.get(i+k1).getX()+10,props.get(i+k1).getY()+30);
 
                 k1-=2;
             }
@@ -247,7 +247,7 @@ public class Frame extends JFrame {
 
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Dialog", Font.PLAIN, 30));
-                g.drawString(i+k +" "+ props.get(i+k).getGradeCount(),props.get(i+k).getX()+10,props.get(i+k).getY()+30);
+                g.drawString(String.valueOf(i+k),props.get(i+k).getX()+10,props.get(i+k).getY()+30);
                 k+=2;
             }
             g.setColor(Color.RED);
@@ -277,25 +277,23 @@ public class Frame extends JFrame {
     public void changeCoordOfPlayer(Player player, int pos, int diceNumber, int posMaxX, int posMaxY){
         int[] coord;
         if(player.getPosition()<11&&pos>=0){
-            coord = new int[]{player.getCoordinate()[0] + (diceNumber * 80), player.getCoordinate()[1] , player.getCoordinate()[2], player.getCoordinate()[3]};
+            coord = new int[]{player.getCoordinate()[0] + (diceNumber * 80)-10, player.getCoordinate()[1] , player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
         if(player.getPosition()<11&&pos>=28){
-            coord = new int[]{posMaxX-800+(player.getPosition()*80)+10, posMaxY-700, player.getCoordinate()[2], player.getCoordinate()[3]};
+            coord = new int[]{posMaxX-820+(player.getPosition()*80)+10, posMaxY-700, player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
-
         if(player.getPosition()>=11 &&player.getPosition()<21 && pos<11){
-            coord = new int[]{posMaxX, player.getCoordinate()[1]  + ((player.getPosition()-10)*70)+10, player.getCoordinate()[2], player.getCoordinate()[3]};
+            coord = new int[]{posMaxX-10, player.getCoordinate()[1]  + ((player.getPosition()-10)*70), player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
         if(player.getPosition()>=11 &&player.getPosition()<21 && pos>=11){
             coord = new int[]{player.getCoordinate()[0], player.getCoordinate()[1]  + (diceNumber*70), player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
-
         if(player.getPosition()>=21&& player.getPosition()<31&& pos<21){
-            coord = new int[]{player.getCoordinate()[0] - ((player.getPosition()-20)*80)+10, posMaxY, player.getCoordinate()[2], player.getCoordinate()[3]};
+            coord = new int[]{player.getCoordinate()[0] - ((player.getPosition()-20)*80), posMaxY, player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
 
@@ -308,7 +306,7 @@ public class Frame extends JFrame {
             player.setCoordinate(coord);
         }
         if(player.getPosition()>=31&& player.getPosition()<=39&& pos<30){
-            coord = new int[]{posMaxX-800, player.getCoordinate()[1]  - ((player.getPosition()-30)*70)+10, player.getCoordinate()[2], player.getCoordinate()[3]};
+            coord = new int[]{posMaxX-800, player.getCoordinate()[1]  - ((player.getPosition()-30)*70), player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
 

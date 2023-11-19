@@ -61,10 +61,17 @@ public class Game {
                 Object[] options = {"yes", "no"};
                 int result = JOptionPane.showOptionDialog(null, "Вы попали в казино, хотите сыграть? (yes, no) ", "Что хотите?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if (result == 0) {
-                    field.setText(field.getText() + "Выберете 2 цифры ");
-                    int numCas1 = scanner.nextInt();
-                    int numCas2 = scanner.nextInt();
-                    casino(player, numCas1, numCas2);
+                    Integer[] nums= {1,2,3,4,5,6};
+                    int numCas= (int) JOptionPane.showInputDialog(null, "Сделайте ставку какое число выпадет кубике", "Выбор значений кубика",JOptionPane.QUESTION_MESSAGE, null, nums, nums[0]);
+                    int diceNum=casino(player, numCas);
+                    System.out.println(diceNum);
+                    System.out.println(numCas);
+                    field.setText("Выпало "+diceNum);
+                    if (diceNum==numCas){
+                        field.setText(field.getText()+" Вы выиграли ");
+                    }else {
+                        field.setText(field.getText()+" Вы проиграли ");
+                    }
                 } else {
                     return;
                 }
@@ -119,13 +126,14 @@ public class Game {
         }
     }
 
-    public void casino(Player player, int numCas1, int numCas2) {
+    public int casino(Player player, int numCas) {
         int diceNum = dice.createNumber();
-        if (diceNum == numCas1 || diceNum == numCas2) {
+        if (diceNum == numCas) {
             player.setMoney(player.getMoney() + 100);
         } else {
             player.setMoney(player.getMoney() - 100);
         }
+        return diceNum;
     }
 
     public boolean checkLose(Player player) {
