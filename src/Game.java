@@ -83,33 +83,29 @@ public class Game {
                 return;
             }
         }
-
-
-
-
         if (prop.getNumOfOwnedPlayer() != -1 && prop.getNumOfOwnedPlayer() != numPlayer) {
             player.setMoney(player.getMoney() - prop.getCost());
             players.get(prop.getNumOfOwnedPlayer()).setMoney(players.get(prop.getNumOfOwnedPlayer()).getMoney()+prop.getCost());
             field.setText(field.getText()+"Вы попали на чужую клетку! "+"\n");
         }
         if (prop.getNumOfOwnedPlayer() == numPlayer) {
-            Object[] options = {"grade", "no"};
-            int result = JOptionPane.showOptionDialog(null, "Хотите улучшить постройку? ","Что хотите?",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            Object[] options = {"grade", "sell"};
+            int result = JOptionPane.showOptionDialog(null, "Хотите улучшить постройку или продать? ","Что хотите?",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if (result == 0) {
-                player.grade(prop);
+                player.gradeObject(prop);
+            }else {
+                player.sellObject(prop);
             }
+            return;
         }
         if (prop.getNumOfOwnedPlayer() == -1 && prop.getName() != 0 && prop.getName() != 10 && prop.getName() != 20 && prop.getName() != 30) {
-            Object[] options = {"buy", "sell"};
-            int result = JOptionPane.showOptionDialog(null, "Вы хотите купить или продать ","Что хотите?",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            Object[] options = {"yes", "no"};
+            int result = JOptionPane.showOptionDialog(null, "Вы хотите купить? ","Что хотите?",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if (result == 0) {
                 player.choice("buy", prop);
-            } else {
-                player.choice("sell", prop);
-                }
+            }
+            return;
         }
-
-
         field.setText(field.getText()+"Ход закончен");
     }
 

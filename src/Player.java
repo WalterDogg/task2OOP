@@ -87,7 +87,7 @@ public class Player {
     public void changeObjects (Property prop){
 
     }
-    public void grade(Property prop){
+    public void gradeObject(Property prop){
         if(prop.getGradeCount()<4){
             prop.setGradeCount(prop.getGradeCount()+1);
             prop.setCost(prop.getCost()*2);
