@@ -93,7 +93,7 @@ public class Frame extends JFrame {
         }
 
         List<Property> objects0 = new ArrayList<>();
-        Player player0 = new Player(objects0,0,1000, new int[]{pointStart.x + 10, pointStart.y + 10, 25, 25}, Color.red);
+        Player player0 = new Player(objects0,0,100, new int[]{pointStart.x + 10, pointStart.y + 10, 25, 25}, Color.red);
         players.add(player0);
 
         List<Property> objects1 = new ArrayList<>();
@@ -118,6 +118,7 @@ public class Frame extends JFrame {
                 int diceNumber = numOfFirstDice + numOfSecondDice;
                 Player player = players.get(count);
                 int pos=player.getPosition();
+                textArea2.setText("Ход игрока " + count);
                 if(player.getCountOfJail()==0){
                     game.dropDice(count,textArea2, diceNumber);
                     panel2.setVisible(true);
@@ -288,6 +289,12 @@ public class Frame extends JFrame {
             coord = new int[]{posMaxX-10, player.getCoordinate()[1]  + ((player.getPosition()-10)*70), player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
+
+        if(player.getPosition()==11 && pos==39){
+            coord = new int[]{posMaxX-10, player.getCoordinate()[1], player.getCoordinate()[2], player.getCoordinate()[3]};
+            player.setCoordinate(coord);
+        }
+
         if(player.getPosition()>=11 &&player.getPosition()<21 && pos>=11){
             coord = new int[]{player.getCoordinate()[0], player.getCoordinate()[1]  + (diceNumber*70), player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
@@ -296,7 +303,10 @@ public class Frame extends JFrame {
             coord = new int[]{player.getCoordinate()[0] - ((player.getPosition()-20)*80), posMaxY, player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
-
+        if(player.getPosition()==21&& pos==9){
+            coord = new int[]{player.getCoordinate()[0], posMaxY, player.getCoordinate()[2], player.getCoordinate()[3]};
+            player.setCoordinate(coord);
+        }
         if(player.getPosition()>=21&& player.getPosition()<30&& pos>=21){
             coord = new int[]{player.getCoordinate()[0] - (diceNumber * 80), player.getCoordinate()[1], player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
@@ -307,6 +317,11 @@ public class Frame extends JFrame {
         }
         if(player.getPosition()>=31&& player.getPosition()<=39&& pos<30){
             coord = new int[]{posMaxX-800, player.getCoordinate()[1]  - ((player.getPosition()-30)*70), player.getCoordinate()[2], player.getCoordinate()[3]};
+            player.setCoordinate(coord);
+        }
+
+        if(player.getPosition()==31&& pos==19){
+            coord = new int[]{posMaxX-800, player.getCoordinate()[1], player.getCoordinate()[2], player.getCoordinate()[3]};
             player.setCoordinate(coord);
         }
 
